@@ -1,0 +1,17 @@
+// program #01: Welcome to C++ language Programming
+
+/*
+use namespace
+main fucntion will return a value and it is int 
+display strings, get data from user and display data
+*/
+
+#include <iostream>
+     using namespace std;
+
+int main() {
+    string name;
+    cout<<"Welcome to C++ language Programming"; //display a string (a string is enclosed by"")
+    cin>>name; // get string from user
+    cout<<"Hi " + name + ", Welcome to C++ Programming Class.\n"; // we can concatenate string by using +
+}
