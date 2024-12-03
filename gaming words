@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string hiddenWord = "PROGRAMMING"; // The word to guess
+    string guessedWord(hiddenWord.length(), '*'); // Hidden word display
+    int lives = 5; // Number of attempts
+    char guessedLetter;
+    bool isCorrect;
+
+    cout << "Hidden word is made up of " << hiddenWord.length() 
+         << " letters (" << lives << " lives remaining)\n";
+    cout << guessedWord << endl;
+
+    while (lives > 0 && guessedWord != hiddenWord) {
+        cout << "Guess the letter: ";
+        cin >> guessedLetter;
+        guessedLetter = toupper(guessedLetter); // Convert to uppercase for consistency
+        isCorrect = false;
+
+        for (size_t i = 0; i < hiddenWord.length(); i++) {
+            if (hiddenWord[i] == guessedLetter && guessedWord[i] != guessedLetter) {
+                guessedWord[i] = guessedLetter;
+                isCorrect = true;
+            }
+        }
+
+        if (!isCorrect) {
+            lives--;
+            cout << "Incorrect! Lives remaining: " << lives << endl;
+        } else {
+            cout << "Correct! " << endl;
+        }
+
+        cout << guessedWord << endl;
+    }
+
+    if (guessedWord == hiddenWord) {
+        cout << "Congratulations! You guessed the word: " << hiddenWord << endl;
+    } else {
+        cout << "Game over! The word was: " << hiddenWord << endl;
+    }
+
+    return 0;
+}
